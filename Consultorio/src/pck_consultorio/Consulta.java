@@ -2,6 +2,8 @@ package pck_consultorio;
 import pck_fecha.*;
 
 public class Consulta implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private int noConsulta;
     private String idEmpleado;
     private int noPaciente;
