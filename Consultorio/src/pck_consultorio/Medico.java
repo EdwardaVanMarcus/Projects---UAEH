@@ -2,6 +2,8 @@ package pck_consultorio;
 import pck_fecha.*;
 
 public class Medico implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     protected String idEmpleado;
     protected String nombre;
     protected String direccion;
