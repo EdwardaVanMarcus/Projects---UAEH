@@ -17,11 +17,11 @@ public class Marco implements Actions{
         Actions.cargarLista("Consiltas.txt", pacientes);
 
         // Variables a utilizar
-        int id;
-        String nombre;
-        Fecha fecha;
+        String id, nombre, turno, especialidad, area, correo, direccion, telefono, enfermer, diagnostico;
+        Fecha fechaNacimiento, fechaContratacion;
+        int d, m, a, noConsulta, noPaciente, consultorio;
         
-        // Programa Principal
+        // Menus
         int opc;
         String menu = """
                       ------- CONSULTORIO MEDICO -------
@@ -53,7 +53,7 @@ public class Marco implements Actions{
                            n1
                            Vazquez Vizuet Angel Alexis
                            """;
-        
+        // Programa Principal
         do{
             do{
                 opc = -1;
@@ -66,13 +66,7 @@ public class Marco implements Actions{
 
             switch(opc){
                 case 1 -> {
-                    id = 0;
-                    nombre = "Siuu";
-                    fecha = new Fecha (1, 3, 2019);
-
-                    id = id * id;
-                    nombre += nombre;
-                    if (fecha.fechaCorrecta()) id = id * id;
+                   
                 }
                 
                 case 2 -> {
