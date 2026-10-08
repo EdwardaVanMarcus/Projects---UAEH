@@ -13,7 +13,7 @@ public class TestConsultorio implements Actions{
         // Lectura de los archivos
         Actions.cargarLista("Medicos.txt", medicos);
         Actions.cargarLista("Pacientes.txt", consultas);
-        Actions.cargarLista("Consiltas.txt", pacientes);
+        Actions.cargarLista("Consultas.txt", pacientes);
 
         // Variables a utilizar
         String id, nombre, turno, especialidad, area, correo, direccion, telefono, enfermer, diagnostico;
@@ -57,76 +57,77 @@ public class TestConsultorio implements Actions{
             opc = Actions.entradaNumerica(1, 17, menu, "Consultorio Medico", "opcion");
 
             switch(opc){
-                case 1 -> {
-                 // haber ya jala siuuu
-                 opc = 5;
+                case 1: {
                 }
+                id = Actions.checkString("Ingrese el ID:\n", "Alta de un medico familiar");
+
+                if (Actions.hayIdGrl (medicos, id))
                 
-                case 2 -> {
+                case 2: {
                     
                 }
                 
-                case 3 -> {
+                case 3: {
                     
                 }
                 
-                case 4 -> {
+                case 4: {
                     
                 }
                 
-                case 5 -> {
+                case 5: {
                     
                 }
                 
-                case 6 -> {
+                case 6: {
                     
                 }
                 
-                case 7 -> {
+                case 7: {
                     
                 }
                 
-                case 8 -> {
+                case 8: {
                     
                 }
                 
-                case 9 -> {
+                case 9: {
                     
                 }
                 
-                case 10 -> {
+                case 10: {
                     
                 }
                 
-                case 11 -> {
+                case 11: {
                     
                 }
                 
-                case 12 -> {
+                case 12: {
                     
                 }
                 
-                case 13 -> {
+                case 13: {
                     
                 }
                 
-                case 14 -> {
+                case 14: {
                     
                 }
                 
-                case 15 -> {
+                case 15: {
                     
                 }
                 
-                case 16 -> {
+                case 16: {
                     
                 }
                 
-                case 17 -> {
+                case 17: {
                     JOptionPane.showMessageDialog(null,copyright,"Copyright",1);
                 }
                 
-                default -> {
+                default: {
                     JOptionPane.showMessageDialog(null,"Verifique las opciones del menu","Error de entrada",2);
                 }
             }

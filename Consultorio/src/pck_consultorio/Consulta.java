@@ -1,4 +1,6 @@
 package pck_consultorio;
+
+import java.io.Serializable;
 import pck_fecha.*;
 
 public class Consulta implements Serializable {

@@ -2,7 +2,6 @@ package pck_consultorio;
 
 import java.io.*;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 
 public interface Actions {
@@ -12,7 +11,7 @@ public interface Actions {
         ObjectInputStream entrada = null;
 
         try{
-            ArrayList<T> aux = null;
+            ArrayList<T> aux;
 
             fin = new FileInputStream(nombre);
             
@@ -104,13 +103,39 @@ public interface Actions {
     }
 
     // Entrada de strings
-    static String checkString(String aboutVar, String titleBox){
+    static String checkString(String aboutVar, String titleBox) {
         String s;
-        do{
-            s=JOptionPane.showInputDialog(null,aboutVar,titleBox,3);
-            if(s.isBlank())
-                JOptionPane.showMessageDialog(null,"La entrada no debe estar vacia","Error de entrada",2);
-        }while(s.isBlank());
+
+        do {
+            s = JOptionPane.showInputDialog(null, aboutVar, titleBox, 3);
+
+            if (s == null) {
+                return null; // Usuario presiono Cancelar
+            }
+
+            s = s.trim();
+
+            if (s.isBlank()) {
+                JOptionPane.showMessageDialog(null,"La entrada no debe estar vacía","Error de entrada",2);
+            } 
+            else if (!s.matches("[a-zA-Z0-9]+")) {
+                JOptionPane.showMessageDialog(null,"La entrada solo debe contener letras y números","Error de entrada",2);
+            }
+
+        } while (s.isBlank() || !s.matches("[a-zA-Z0-9]+"));
+
         return s;
+    }
+
+    // No esta el id para el general
+    static boolean hayIdGrl (ArrayList<Medico> lista, String id){
+        for (int i = 0; i < lista.size(); i++){
+            Medico check = lista.get(i);
+
+            if (check instanceof General){
+                if (check.getIdEmpleado().equals(id)) return true;
+            }
+        }
+        return false;
     }
 }
