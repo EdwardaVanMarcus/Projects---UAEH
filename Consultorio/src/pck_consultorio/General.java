@@ -3,6 +3,8 @@ package pck_consultorio;
 import pck_fecha.Fecha;
 
 public class General extends Medico {
+    private static final long serialVersionUID = 1L;
+
     private String turno;
     private int consultorio;
 
