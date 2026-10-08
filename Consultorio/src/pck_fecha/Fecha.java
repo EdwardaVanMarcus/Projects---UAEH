@@ -1,5 +1,6 @@
 package pck_fecha;
-public class Fecha {
+public class Fecha implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     private int dia;
     private int mes;
