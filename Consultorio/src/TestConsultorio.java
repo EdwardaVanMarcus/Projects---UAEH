@@ -1,8 +1,7 @@
-import pck_consultorio.*;
-import pck_fecha.*;
-
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import pck_consultorio.*;
+import pck_fecha.*;
 
 public class TestConsultorio implements Actions{
     public static void main(String[] args) {
@@ -17,9 +16,9 @@ public class TestConsultorio implements Actions{
         Actions.cargarLista("Consiltas.txt", pacientes);
 
         // Variables a utilizar
-        int id;
-        String nombre;
-        Fecha fecha;
+        String id, nombre, turno, especialidad, area, correo, direccion, telefono, enfermer, diagnostico;
+        Fecha fechaNacimiento, fechaContratacion;
+        int d, m, a, noConsulta, noPaciente, consultorio;
         
         // Programa Principal
         int opc;
@@ -50,29 +49,17 @@ public class TestConsultorio implements Actions{
                            
                            Desarrolladores:
                            Eric Rene Avila Galindo
-                           n1
+                           Quintanar Medina Marco Eduardo
                            Vazquez Vizuet Angel Alexis
                            """;
         
         do{
-            do{
-                opc = -1;
-                try{
-                    opc = Integer.parseInt(JOptionPane.showInputDialog(null,menu,"Menu",3));
-                }catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null,"La opcion debe ser numerica","Error de entrada",2);
-                }
-            }while(opc == -1);
+            opc = Actions.entradaNumerica(1, 17, menu, "Consultorio Medico", "opcion");
 
             switch(opc){
                 case 1 -> {
-                    id = 0;
-                    nombre = "Siuu";
-                    fecha = new Fecha (1, 3, 2019);
-
-                    id = id * id;
-                    nombre += nombre;
-                    if (fecha.fechaCorrecta()) id = id * id;
+                 // haber ya jala siuuu
+                 opc = 5;
                 }
                 
                 case 2 -> {
