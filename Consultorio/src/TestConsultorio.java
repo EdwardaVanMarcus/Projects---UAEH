@@ -78,11 +78,31 @@ public class TestConsultorio implements Actions{
 
                     turno = Actions.checkString("Ingresa el turno", "Alata de un medico", "turno");
                     consultorio = Actions.entradaNumerica(1, 7, "Ingresa el No. de consultorio", "ALta de un medico", "No. consultorio");
+
+                    General grl = new General(id, nombre, direccion, telefono, fechaNacimiento, fechaContratacion, turno, consultorio);
+                    medicos.add(grl);
                 }
                 
-                
                 case 2: {
+                    do { 
+                        id = Actions.checkString("Ingrese el ID:\n", "Alta de un medico familiar", rexNumLet);
+                        if (Actions.hayId(medicos, id)) JOptionPane.showMessageDialog(null, "Ya existe el ID, ingrese otro", "Error al ingresar", 2);
+                    } while (Actions.hayId(medicos, id));
+
+                    nombre = Actions.checkString("Ingrese el nombre del medico: \n", "Alta de un medico familiar", rexLet);
+                    direccion = Actions.checkString("Direccion: \n", "Alta de un medico familiar", rexNumLet);
+                    telefono = Actions.checkString("Telefono: \n", "Alta de un medico familiar", rexNum);
+
+                    // Para la fecha actual se utilizara el 09 / 10 / 2026
+                    fechaNacimiento = Actions.fNacimiento();
+                    fechaContratacion = Actions.ingresoFecha("Contratacion", "Alta de un medico");
+
+                    especialidad = Actions.checkString("Ingrese la especialidad", "Alta de un medico", "especialidad");
+                    area = Actions.checkString("Ingrese el area", "Alta de un medico", rexLet);
+                    enfermer = Actions.checkString("Ingrese al enfermero(a)", "Alta de un medico", rexLet);
                     
+                    Especialista esp = new Especialista(id, nombre, direccion, telefono, fechaNacimiento, fechaContratacion, especialidad, area, enfermer);
+                    medicos.add(esp);
                 }
                 
                 case 3: {
