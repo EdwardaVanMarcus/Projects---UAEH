@@ -1,7 +1,7 @@
 package pck_consultorio;
 import pck_fecha.*;
 
-public class Paciente {
+public class Paciente implements Serializable {
     private int noPaciente;
     private String nombre;
     private String direccion;
