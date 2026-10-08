@@ -73,17 +73,11 @@ public class TestConsultorio implements Actions{
                     telefono = Actions.checkString("Telefono: \n", "Alta de un medico familiar", rexNum);
 
                     // Para la fecha actual se utilizara el 09 / 10 / 2026
-                    int edad = 0;
-                    do { 
-                        Fecha hoy = new Fecha(9, 10, 2026);
-                        fechaNacimiento = Actions.ingresoFecha("Contratacion", "ALta de un medico familiar");
-                        
-                        edad = fechaNacimiento.calcularEdad(hoy);
+                    fechaNacimiento = Actions.fNacimiento();
+                    fechaContratacion = Actions.ingresoFecha("Contratacion", "Alta de un medico");
 
-                        if (edad < 29) JOptionPane.showMessageDialog(null, "El medico debe ser mayor de 28 anios", copyright, a);
-                        if (edad > 50) JOptionPane.showMessageDialog(null, "El medico debe ser menor de 50 anios", copyright, a);
-
-                    } while (edad < 29 || edad > 50);
+                    turno = Actions.checkString("Ingresa el turno", "Alata de un medico", "turno");
+                    consultorio = Actions.entradaNumerica(1, 7, "Ingresa el No. de consultorio", "ALta de un medico", "No. consultorio");
                 }
                 
                 
