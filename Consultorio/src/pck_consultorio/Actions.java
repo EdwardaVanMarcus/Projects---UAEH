@@ -122,7 +122,7 @@ public interface Actions {
         return s;
     }
 
-    // No esta el id para el general
+    // No esta el id para medico
     static boolean hayId (ArrayList<Medico> lista, String id){
         for (int i = 0; i < lista.size(); i++){
             Medico check = lista.get(i);
@@ -130,6 +130,16 @@ public interface Actions {
             if (check instanceof General){
                 if (check.getIdEmpleado().equals(id)) return true;
             }
+        }
+        return false;
+    }
+
+    // No esta el paciente
+    static boolean hayId (ArrayList<Paciente> lista, int id){
+        for (int i = 0; i < lista.size(); i++){
+            Paciente check = lista.get(i);
+
+            if (check.getNoPaciente() == id) return true;
         }
         return false;
     }
@@ -154,6 +164,24 @@ public interface Actions {
         } while (!fecha.fechaCorrecta() || fecha.esAnteriorOIgual(hoy));
 
         return fecha;
+    }
+
+    // Validar edades
+    static Fecha fNacimiento (){
+        int edad = 0;
+        Fecha fechaNacimiento;
+        do { 
+            Fecha hoy = new Fecha(9, 10, 2026);
+            fechaNacimiento = Actions.ingresoFecha("Nacimiento", "ALta de un medico familiar");
+            
+            edad = fechaNacimiento.calcularEdad(hoy);
+
+            if (edad < 29) JOptionPane.showMessageDialog(null, "El medico debe ser mayor de 28 anios", "Alta de un medico", 2);
+            if (edad > 50) JOptionPane.showMessageDialog(null, "El medico debe ser menor de 50 anios", "Alta de un medico", 2);
+
+        } while (edad < 29 || edad > 50);
+
+        return fechaNacimiento;
     }
 
 }
