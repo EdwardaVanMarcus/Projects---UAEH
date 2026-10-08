@@ -3,6 +3,8 @@ package pck_consultorio;
 import pck_fecha.Fecha;
 
 public class Especialista extends Medico{
+    private static final long serialVersionUID = 1L;
+
     private String especialidad;
     private String area;
     private String enfermera_o;
