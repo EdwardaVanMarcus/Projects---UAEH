@@ -51,6 +51,24 @@ public class Fecha implements Serializable {
         }
         return (diaCorrecto && mesCorrecto && anioCorrecto);
     }
+
+    public boolean esAnteriorOIgual(Fecha otra) {
+        if (this.anio < otra.anio) return true;
+        if (this.anio > otra.anio) return false;
+
+        if (this.mes < otra.mes) return true;
+        if (this.mes > otra.mes) return false;
+
+        return this.dia <= otra.dia;
+    }
+
+    public int calcularEdad(Fecha hoy) {
+        int edad = hoy.anio - this.anio;
+
+        if (hoy.mes < this.mes || (hoy.mes == this.mes && hoy.dia < this.dia)) edad--;
+
+        return edad;
+    }
     
     public String getFecha(){
         return dia + "/" + mes + "/" + anio;

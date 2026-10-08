@@ -1,10 +1,9 @@
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import pck_consultorio.*;
 import pck_fecha.*;
 
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-
-public class Marco implements Actions{
+public class TestConsultorio implements Actions{
     public static void main(String[] args) {
         // Arreglos dinamicos
         ArrayList <Medico> medicos = new ArrayList <>();
@@ -14,14 +13,14 @@ public class Marco implements Actions{
         // Lectura de los archivos
         Actions.cargarLista("Medicos.txt", medicos);
         Actions.cargarLista("Pacientes.txt", consultas);
-        Actions.cargarLista("Consiltas.txt", pacientes);
+        Actions.cargarLista("Consultas.txt", pacientes);
 
         // Variables a utilizar
         String id, nombre, turno, especialidad, area, correo, direccion, telefono, enfermer, diagnostico;
         Fecha fechaNacimiento, fechaContratacion;
         int d, m, a, noConsulta, noPaciente, consultorio;
         
-        // Menus
+        // Programa Principal
         int opc;
         String menu = """
                       ------- CONSULTORIO MEDICO -------
@@ -50,90 +49,87 @@ public class Marco implements Actions{
                            
                            Desarrolladores:
                            Eric Rene Avila Galindo
-                           n1
+                           Quintanar Medina Marco Eduardo
                            Vazquez Vizuet Angel Alexis
                            """;
-        // Programa Principal
+        
         do{
-            do{
-                opc = -1;
-                try{
-                    opc = Integer.parseInt(JOptionPane.showInputDialog(null,menu,"Menu",3));
-                }catch(NumberFormatException e){
-                    JOptionPane.showMessageDialog(null,"La opcion debe ser numerica","Error de entrada",2);
-                }
-            }while(opc == -1);
+            opc = Actions.entradaNumerica(1, 17, menu, "Consultorio Medico", "opcion");
 
             switch(opc){
-                case 1 -> {
-                   
+                case 1: {
+                    do { 
+                        id = Actions.checkString("Ingrese el ID:\n", "Alta de un medico familiar");
+                        if (Actions.hayIdGrl(medicos, id)) JOptionPane.showMessageDialog(null, "Ya existe el ID, ingrese otro", "Error al ingresar", 2);
+                    } while (Actions.hayIdGrl(medicos, id));
                 }
                 
-                case 2 -> {
+                
+                case 2: {
                     
                 }
                 
-                case 3 -> {
+                case 3: {
                     
                 }
                 
-                case 4 -> {
+                case 4: {
                     
                 }
                 
-                case 5 -> {
+                case 5: {
                     
                 }
                 
-                case 6 -> {
+                case 6: {
                     
                 }
                 
-                case 7 -> {
+                case 7: {
                     
                 }
                 
-                case 8 -> {
+                case 8: {
                     
                 }
                 
-                case 9 -> {
+                case 9: {
                     
                 }
                 
-                case 10 -> {
+                case 10: {
                     
                 }
                 
-                case 11 -> {
+                case 11: {
                     
                 }
                 
-                case 12 -> {
+                case 12: {
                     
                 }
                 
-                case 13 -> {
+                case 13: {
                     
                 }
                 
-                case 14 -> {
+                case 14: {
                     
                 }
                 
-                case 15 -> {
+                case 15: {
                     
                 }
                 
-                case 16 -> {
+                case 16: {
                     
                 }
                 
-                case 17 -> {
+                case 17: {
                     JOptionPane.showMessageDialog(null,copyright,"Copyright",1);
                 }
                 
-                default -> {
+                default: {
                     JOptionPane.showMessageDialog(null,"Verifique las opciones del menu","Error de entrada",2);
                 }
             }

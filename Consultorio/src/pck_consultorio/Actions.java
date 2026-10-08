@@ -3,6 +3,7 @@ package pck_consultorio;
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import pck_fecha.*;
 
 public interface Actions {
     // Inicio de archivos
@@ -81,12 +82,6 @@ public interface Actions {
             try {
                 String ent = JOptionPane.showInputDialog(null, dato, titulo, 3);
 
-                // Por si se presiona cancelar o cierra la ventana
-                if (ent == null) {
-                    JOptionPane.showMessageDialog(null, "Operacion cancelada", "Aviso", 2);
-                    return num;
-                }
-
                 num = Integer.parseInt(ent);
 
                 if (num < l || num > r) {
@@ -102,8 +97,8 @@ public interface Actions {
         return num;
     }
 
-    // Entrada de strings
-    static String checkString(String aboutVar, String titleBox) {
+    // Entrada de strings con num y let
+    static String checkString(String aboutVar, String titleBox, String rex) {
         String s;
 
         do {
@@ -118,19 +113,19 @@ public interface Actions {
             if (s.isBlank()) {
                 JOptionPane.showMessageDialog(null,"La entrada no debe estar vacía","Error de entrada",2);
             } 
-            else if (!s.matches("[a-zA-Z0-9]+")) {
-                JOptionPane.showMessageDialog(null,"La entrada solo debe contener letras y números","Error de entrada",2);
+            else if (!s.matches("rex")) {
+                JOptionPane.showMessageDialog(null,"La entrada tiene valores invalidos","Error de entrada",2);
             }
 
-        } while (s.isBlank() || !s.matches("[a-zA-Z0-9]+"));
+        } while (s.isBlank() || !s.matches("rex"));
 
         return s;
     }
 
     // No esta el id para el general
-    static <T extends Actions> boolean hayId (ArrayList<T> lista, String id){
+    static boolean hayId (ArrayList<Medico> lista, String id){
         for (int i = 0; i < lista.size(); i++){
-            T check = lista.get(i);
+            Medico check = lista.get(i);
 
             if (check instanceof General){
                 if (check.getIdEmpleado().equals(id)) return true;
@@ -138,4 +133,27 @@ public interface Actions {
         }
         return false;
     }
+
+    // Ingreso de una fecha valida
+    static Fecha ingresoFecha(String titulo, String minDato){
+        Fecha fecha;
+        Fecha hoy = new Fecha(9, 10, 2026);
+        
+        do { 
+            int d, m, a;
+
+            d = entradaNumerica(1, 31, "Ingrese el dia de: " + minDato, titulo, minDato);
+            m = entradaNumerica(1, 12, "Ingrese el mes de: " + minDato, titulo, minDato);
+            a = entradaNumerica(1900, 2026, "Ingrese el anio de: " + minDato, titulo, minDato);
+
+            fecha = new Fecha(d, m, a);
+
+            if (!fecha.fechaCorrecta()) JOptionPane.showMessageDialog(null, "La fecha no existe", "Error", 2);
+            else if (!fecha.esAnteriorOIgual(hoy)) JOptionPane.showMessageDialog(null, "La fecha no puede ser despues del 9 / 10 / 2026", "Error", 2);
+            
+        } while (!fecha.fechaCorrecta() || fecha.esAnteriorOIgual(hoy));
+
+        return fecha;
+    }
+
 }

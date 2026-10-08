@@ -19,6 +19,11 @@ public class TestConsultorio implements Actions{
         String id, nombre, turno, especialidad, area, correo, direccion, telefono, enfermer, diagnostico;
         Fecha fechaNacimiento, fechaContratacion;
         int d, m, a, noConsulta, noPaciente, consultorio;
+
+        // Funcionalidades
+        String rexNumLet = "[a-zA-Z0-9]+";
+        String rexLet = "[a-zA-Z]+";
+        String rexNum = "[0-9]+";
         
         // Programa Principal
         int opc;
@@ -59,9 +64,26 @@ public class TestConsultorio implements Actions{
             switch(opc){
                 case 1: {
                     do { 
-                        id = Actions.checkString("Ingrese el ID:\n", "Alta de un medico familiar");
-                        if (Actions.hayIdGrl(medicos, id)) JOptionPane.showMessageDialog(null, "Ya existe el ID, ingrese otro", "Error al ingresar", 2);
-                    } while (Actions.hayIdGrl(medicos, id));
+                        id = Actions.checkString("Ingrese el ID:\n", "Alta de un medico familiar", rexNumLet);
+                        if (Actions.hayId(medicos, id)) JOptionPane.showMessageDialog(null, "Ya existe el ID, ingrese otro", "Error al ingresar", 2);
+                    } while (Actions.hayId(medicos, id));
+
+                    nombre = Actions.checkString("Ingrese el nombre del medico: \n", "Alta de un medico familiar", rexLet);
+                    direccion = Actions.checkString("Direccion: \n", "Alta de un medico familiar", rexNumLet);
+                    telefono = Actions.checkString("Telefono: \n", "Alta de un medico familiar", rexNum);
+
+                    // Para la fecha actual se utilizara el 09 / 10 / 2026
+                    int edad = 0;
+                    do { 
+                        Fecha hoy = new Fecha(9, 10, 2026);
+                        fechaNacimiento = Actions.ingresoFecha("Contratacion", "ALta de un medico familiar");
+                        
+                        edad = fechaNacimiento.calcularEdad(hoy);
+
+                        if (edad < 29) JOptionPane.showMessageDialog(null, "El medico debe ser mayor de 28 anios", copyright, a);
+                        if (edad > 50) JOptionPane.showMessageDialog(null, "El medico debe ser menor de 50 anios", copyright, a);
+
+                    } while (edad < 29 || edad > 50);
                 }
                 
                 
