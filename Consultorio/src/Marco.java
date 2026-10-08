@@ -50,7 +50,7 @@ public class Marco implements Actions{
                            
                            Desarrolladores:
                            Eric Rene Avila Galindo
-                           n1
+                           Quintanar Medina Marco Eduardo
                            Vazquez Vizuet Angel Alexis
                            """;
         // Programa Principal
