@@ -1,8 +1,10 @@
 package pck_consultorio;
+
+import java.io.Serializable;
 import pck_fecha.*;
 
 public class Paciente implements Serializable {
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     private int noPaciente;
     private String nombre;

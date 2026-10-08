@@ -4,7 +4,7 @@ import pck_fecha.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class TestConsultorio implements Actions{
+public class Eric implements Actions{
     public static void main(String[] args) {
         // Arreglos dinamicos
         ArrayList <Medico> medicos = new ArrayList <>();
