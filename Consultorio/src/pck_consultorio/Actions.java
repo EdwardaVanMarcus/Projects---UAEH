@@ -128,9 +128,9 @@ public interface Actions {
     }
 
     // No esta el id para el general
-    static boolean hayIdGrl (ArrayList<Medico> lista, String id){
+    static <T extends Actions> boolean hayId (ArrayList<T> lista, String id){
         for (int i = 0; i < lista.size(); i++){
-            Medico check = lista.get(i);
+            T check = lista.get(i);
 
             if (check instanceof General){
                 if (check.getIdEmpleado().equals(id)) return true;

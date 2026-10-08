@@ -58,10 +58,12 @@ public class TestConsultorio implements Actions{
 
             switch(opc){
                 case 1: {
+                    do { 
+                        id = Actions.checkString("Ingrese el ID:\n", "Alta de un medico familiar");
+                        if (Actions.hayIdGrl(medicos, id)) JOptionPane.showMessageDialog(null, "Ya existe el ID, ingrese otro", "Error al ingresar", 2);
+                    } while (Actions.hayIdGrl(medicos, id));
                 }
-                id = Actions.checkString("Ingrese el ID:\n", "Alta de un medico familiar");
-
-                if (Actions.hayIdGrl (medicos, id))
+                
                 
                 case 2: {
                     
